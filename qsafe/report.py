@@ -146,7 +146,9 @@ def _milestones(assessment: Assessment) -> str:
         elif year == this_year:
             status, colour = "Due this year", "#8A6A1F"
         else:
-            status, colour = f"{year - this_year} years away", "#4A576A"
+            gap = year - this_year
+            status = f"{gap} year away" if gap == 1 else f"{gap} years away"
+            colour = "#4A576A"
         rows.append(
             f"<tr><td style='width:70px'><b>{year}</b></td><td>{_e(text)}</td>"
             f"<td style='width:130px;color:{colour}'>{status}</td></tr>"
@@ -157,8 +159,14 @@ def _milestones(assessment: Assessment) -> str:
         f"<p class='muted' style='margin-top:12px'>This organisation is classified as "
         f"<b>{'critical information infrastructure' if profile.is_critical_infrastructure else 'a general adopter'}</b>, "
         f"so the binding deadline is <b>{profile.deadline_year}</b>. At an estimated "
-        f"{profile.migration_years}-year migration, work must begin no later than "
-        f"<b>{profile.start_by_year}</b>.</p>"
+        f"{profile.migration_years}-year migration, "
+        + (
+            f"work should already have begun, in <b>{profile.start_by_year}</b>. "
+            f"The remaining window is shorter than the migration it has to hold."
+            if profile.start_by_year < this_year
+            else f"work must begin no later than <b>{profile.start_by_year}</b>."
+        )
+        + "</p>"
     )
 
 
