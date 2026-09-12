@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum readiness — Sample Cooperative Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16202E;--soft:#4A576A;--faint:#8892A0;--paper:#F1F4F7;--rule:#D6DCE4;
+--brass:#8A6A1F;--brass-wash:#F7F1E1;--green:#1A6B4F;--green-wash:#E8F2ED;
+--red:#9A2B2B;--red-wash:#F7EBEB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font:15px/1.6 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px 64px}
+header{background:var(--ink);color:#fff;padding:34px 0 30px;margin-bottom:30px}
+header .wrap{padding-bottom:0}
+h1{font:500 28px/1.25 Georgia,serif;margin:0 0 6px}
+h2{font:500 20px/1.3 Georgia,serif;margin:36px 0 14px}
+h3{font:500 16px/1.3 Georgia,serif;margin:0 0 8px}
+header p{margin:0;color:#9FB0C4;font-size:14px}
+.panel{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:22px 24px;margin-bottom:18px}
+.score{display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+.dial{width:132px;height:132px;border-radius:50%;flex:none;display:flex;flex-direction:column;
+align-items:center;justify-content:center;border:3px solid;text-align:center}
+.dial b{font:500 38px/1 Georgia,serif}
+.dial span{font-size:11.5px;margin-top:5px}
+.score .body{flex:1;min-width:280px}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px}
+.stats div b{display:block;font:500 24px/1.1 Georgia,serif}
+.stats div span{font-size:12.5px;color:var(--faint)}
+.pill{display:inline-block;padding:2px 9px;border-radius:2px;font-size:12px;border:1px solid;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff}
+th{text-align:left;font-weight:500;color:var(--faint);padding:9px 10px;border-bottom:1px solid var(--rule);font-size:12.5px}
+td{padding:9px 10px;border-bottom:1px solid #E7EBF0;vertical-align:top}
+tr:last-child td{border-bottom:0}
+code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--paper);
+padding:1px 5px;border-radius:2px;word-break:break-all}
+.note{background:var(--brass-wash);border:1px solid #E3D5AE;border-radius:3px;padding:16px 20px;margin-bottom:18px}
+.alarm{background:var(--red-wash);border-color:#E0B9B9}
+.ok{background:var(--green-wash);border-color:#BFDACE}
+ul{margin:8px 0 0;padding-left:20px}
+li{margin-bottom:5px}
+.muted{color:var(--soft);font-size:13px}
+.bar{display:flex;height:9px;border-radius:2px;overflow:hidden;margin:14px 0 8px;background:var(--paper)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--soft)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+footer{color:var(--faint);font-size:12.5px;margin-top:34px;border-top:1px solid var(--rule);padding-top:16px}
+@media print{body{background:#fff}.panel,table{border-color:#ccc}}
+</style></head><body>
+<header><div class="wrap">
+  <h1>Post-quantum readiness assessment</h1>
+  <p>Sample Cooperative Bank &middot; banking &middot; 2026-09-12</p>
+</div></header>
+<div class="wrap">
+
+  <div class="panel score">
+    <div class="dial" style="background:#F7EBEB;border-color:#9A2B2B;color:#9A2B2B"><b>28</b><span>readiness score</span></div>
+    <div class="body">
+      <h3 style="margin-bottom:4px">Critical exposure</h3>
+      <p class="muted" style="margin:0">Scanned <code>/home/claude/qsafe/samples/legacy-bank</code> and
+      classified 23 cryptographic findings against the NIST
+      post-quantum standards.</p>
+      <div class="stats">
+        <div><b>6</b><span>need fixing today</span></div>
+        <div><b>11</b><span>high priority</span></div>
+        <div><b>5</b><span>lower priority</span></div>
+        <div><b>11</b><span>distinct algorithms</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel"><div class="bar"><div style="width:26.09%;background:#9A2B2B"></div><div style="width:47.83%;background:#A8511C"></div><div style="width:21.74%;background:#8A6A1F"></div><div style="width:4.35%;background:#1A6B4F"></div></div><div class="legend"><span><i style="background:#9A2B2B"></i>Broken today · 6</span><span><i style="background:#A8511C"></i>Broken by quantum · 11</span><span><i style="background:#8A6A1F"></i>Weakened by quantum · 5</span><span><i style="background:#1A6B4F"></i>Quantum safe · 1</span></div></div>
+
+  <div class="note alarm"><h3>Mosca's inequality is already breached</h3><p style="margin:0">Data must stay confidential for <b>25 years</b> and migration is estimated at <b>4 years</b>, against <b>9 years</b> before a cryptographically relevant quantum computer is assumed to exist (2035). 25 + 4 = 29, which exceeds 9 by <b>20 years</b>.</p><p style="margin:10px 0 0">Anything encrypted today with a quantum-broken algorithm should be treated as already disclosed to any adversary recording traffic. Migration planning cannot wait for a hardware announcement.</p></div>
+
+  <h2>Against the national timeline</h2>
+  <div class="panel"><table><thead><tr><th>Year</th><th>DST roadmap milestone</th><th>Status</th></tr></thead><tbody><tr><td style='width:70px'><b>2026</b></td><td>Tier-1 and Tier-2 PQC testing and certification laboratories operational</td><td style='width:130px;color:#8A6A1F'>Due this year</td></tr><tr><td style='width:70px'><b>2027</b></td><td>Cryptographic inventories complete across critical information infrastructure</td><td style='width:130px;color:#4A576A'>1 years away</td></tr><tr><td style='width:70px'><b>2028</b></td><td>High-priority systems migrated to post-quantum algorithms</td><td style='width:130px;color:#4A576A'>2 years away</td></tr><tr><td style='width:70px'><b>2029</b></td><td>Full post-quantum adoption across government and regulated sectors</td><td style='width:130px;color:#4A576A'>3 years away</td></tr></tbody></table><p class='muted' style='margin-top:12px'>This organisation is classified as <b>critical information infrastructure</b>, so the binding deadline is <b>2027</b>. At an estimated 4-year migration, work must begin no later than <b>2023</b>.</p></div>
+
+  <h2>What to do, in order</h2>
+  <div class="panel"><ul><li><b>Fix 6 classically broken findings first.</b> These are exploitable today and do not depend on any quantum assumption. They are also the easiest budget to obtain, because the risk is not hypothetical.</li><li><b>Schedule 11 high-priority replacements.</b> These use algorithms that Shor's algorithm breaks outright. Plan hybrid deployment — classical alongside post-quantum — rather than a cutover.</li><li><b>Make the inventory continuous.</b> A cryptographic BOM generated once is stale within a sprint. Run this in CI and fail the build on a new quantum-broken dependency, the way a software BOM is already handled.</li><li><b>Write crypto-agility into the architecture.</b> The specific algorithm matters less than whether it can be swapped without a rebuild. Version the algorithm identifier in every protocol and stored format now.</li><li><b>Put PQC clauses in procurement.</b> Every contract signed before 2027 should require the vendor to state a post-quantum roadmap and supply a cryptographic bill of materials.</li><li><b>Register the programme with the sector regulator.</b> As critical information infrastructure, evidence of a phased plan will be expected, not just an end state.</li></ul></div>
+
+  <h2>Findings</h2>
+  <div class="panel" style="padding:0;overflow-x:auto"><table><thead><tr><th>Priority</th><th>Algorithm</th><th>Quantum status</th><th>Where</th><th>Replace with</th><th>Confidence</th></tr></thead><tbody><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>RSA</b><div class='muted'>1024 bits</div></td><td>Broken today</td><td><code>samples/legacy-bank/certs/legacy-branch.pem</code><div class='muted'>X.509 certificate public key (RSA-1024)</div><div class='muted' style='margin-top:3px'><code>CN=legacy-branch.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>certain</td></tr><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>3DES</b></td><td>Broken today</td><td><code>samples/legacy-bank/config/nginx.conf:4</code><div class='muted'>Triple DES offered in a TLS cipher list</div><div class='muted' style='margin-top:3px'><code>ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES256-SHA:DES-CBC3-SHA;</code></div></td><td>AES-256</td><td>high</td></tr><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>SHA-1</b></td><td>Broken today</td><td><code>samples/legacy-bank/src/CoreLedger.java:11</code><div class='muted'>SHA-1 via the JCA</div><div class='muted' style='margin-top:3px'><code>return MessageDigest.getInstance(&quot;SHA-1&quot;);</code></div></td><td>SHA-256 or SHA-3</td><td>high</td></tr><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>3DES</b></td><td>Broken today</td><td><code>samples/legacy-bank/src/CoreLedger.java:14</code><div class='muted'>Triple DES via the JCA</div><div class='muted' style='margin-top:3px'><code>return Cipher.getInstance(&quot;DESede/CBC/PKCS5Padding&quot;);</code></div></td><td>AES-256</td><td>high</td></tr><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>MD5</b></td><td>Broken today</td><td><code>samples/legacy-bank/src/payments.py:8</code><div class='muted'>MD5 hashing</div><div class='muted' style='margin-top:3px'><code>return hashlib.md5(pan.encode()).hexdigest()</code></div></td><td>SHA-256 or SHA-3</td><td>high</td></tr><tr><td><span class='pill' style='background:#F7EBEB;color:#9A2B2B;border-color:#E0B9B9'>immediate</span></td><td><b>SHA-1</b></td><td>Broken today</td><td><code>samples/legacy-bank/src/tokens.js:8</code><div class='muted'>SHA-1 hashing in Node</div><div class='muted' style='margin-top:3px'><code>return crypto.createHash(&quot;sha1&quot;).update(data).digest(&quot;hex&quot;);</code></div></td><td>SHA-256 or SHA-3</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b><div class='muted'>3072 bits</div></td><td>Broken by quantum</td><td><code>samples/legacy-bank/certs/core-api.pem</code><div class='muted'>X.509 certificate public key (RSA-3072)</div><div class='muted' style='margin-top:3px'><code>CN=core-api.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>certain</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>ECDSA</b><div class='muted'>2561 bits</div></td><td>Broken by quantum</td><td><code>samples/legacy-bank/certs/mobile-gw.pem</code><div class='muted'>X.509 certificate public key (EC curve secp256r1)</div><div class='muted' style='margin-top:3px'><code>CN=mobile-gw.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>ML-DSA, or SLH-DSA where a conservative hash-based scheme is preferred</td><td>certain</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b><div class='muted'>2048 bits</div></td><td>Broken by quantum</td><td><code>samples/legacy-bank/certs/service.key</code><div class='muted'>Unencrypted private key on disk (RSA-2048)</div><div class='muted' style='margin-top:3px'><code>RSA-2048</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>certain</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/config/authorized_keys.conf:1</code><div class='muted'>SSH RSA host or user key</div><div class='muted' style='margin-top:3px'><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7example ops@branch-server</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>Ed25519</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/config/authorized_keys.conf:2</code><div class='muted'>SSH Ed25519 key</div><div class='muted' style='margin-top:3px'><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIexample admin@hq</code></div></td><td>ML-DSA, or a hybrid Ed25519 + ML-DSA signature</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>ECDH</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/config/nginx.conf:4</code><div class='muted'>TLS cipher suite using ephemeral elliptic-curve key exchange</div><div class='muted' style='margin-top:3px'><code>ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES256-SHA:DES-CBC3-SHA;</code></div></td><td>ML-KEM, deployed in hybrid with X25519 during transition</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>DH</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/config/nginx.conf:4</code><div class='muted'>TLS cipher suite using ephemeral finite-field Diffie-Hellman</div><div class='muted' style='margin-top:3px'><code>ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES256-SHA:DES-CBC3-SHA;</code></div></td><td>ML-KEM in hybrid mode</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/src/CoreLedger.java:6</code><div class='muted'>RSA via the JCA</div><div class='muted' style='margin-top:3px'><code>KeyPairGenerator gen = KeyPairGenerator.getInstance(&quot;RSA&quot;);</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/src/payments.py:5</code><div class='muted'>RSA key generation via the cryptography library</div><div class='muted' style='margin-top:3px'><code>return rsa.generate_private_key(public_exponent=65537, key_size=2048)</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>ECDSA</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/src/payments.py:14</code><div class='muted'>Elliptic-curve key generation via the cryptography library</div><div class='muted' style='margin-top:3px'><code>return ec.generate_private_key(ec.SECP256R1())</code></div></td><td>ML-DSA, or SLH-DSA where a conservative hash-based scheme is preferred</td><td>high</td></tr><tr><td><span class='pill' style='background:#FAEEE6;color:#A8511C;border-color:#E7C4A8'>high</span></td><td><b>RSA</b></td><td>Broken by quantum</td><td><code>samples/legacy-bank/src/tokens.js:5</code><div class='muted'>RSA-signed JSON Web Tokens</div><div class='muted' style='margin-top:3px'><code>return jwt.sign(payload, key, { algorithm: &quot;RS256&quot; });</code></div></td><td>ML-KEM for key establishment, ML-DSA for signatures</td><td>high</td></tr><tr><td><span class='pill' style='background:#F9F1DC;color:#8A6A1F;border-color:#E3D5AE'>medium</span></td><td><b>SHA-256</b></td><td>Weakened by quantum</td><td><code>samples/legacy-bank/certs/core-api.pem</code><div class='muted'>Certificate signed with sha256withrsaencryption</div><div class='muted' style='margin-top:3px'><code>CN=core-api.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>SHA-384 for data with a long confidentiality horizon</td><td>certain</td></tr><tr><td><span class='pill' style='background:#F9F1DC;color:#8A6A1F;border-color:#E3D5AE'>medium</span></td><td><b>SHA-256</b></td><td>Weakened by quantum</td><td><code>samples/legacy-bank/certs/legacy-branch.pem</code><div class='muted'>Certificate signed with sha256withrsaencryption</div><div class='muted' style='margin-top:3px'><code>CN=legacy-branch.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>SHA-384 for data with a long confidentiality horizon</td><td>certain</td></tr><tr><td><span class='pill' style='background:#F9F1DC;color:#8A6A1F;border-color:#E3D5AE'>medium</span></td><td><b>SHA-256</b></td><td>Weakened by quantum</td><td><code>samples/legacy-bank/certs/mobile-gw.pem</code><div class='muted'>Certificate signed with ecdsa-with-sha256</div><div class='muted' style='margin-top:3px'><code>CN=mobile-gw.bank.local,O=Sample Cooperative Bank,C=IN</code></div></td><td>SHA-384 for data with a long confidentiality horizon</td><td>certain</td></tr><tr><td><span class='pill' style='background:#F9F1DC;color:#8A6A1F;border-color:#E3D5AE'>medium</span></td><td><b>AES-128</b></td><td>Weakened by quantum</td><td><code>samples/legacy-bank/config/nginx.conf:4</code><div class='muted'>AES-128 cipher suite</div><div class='muted' style='margin-top:3px'><code>ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES256-SHA:DES-CBC3-SHA;</code></div></td><td>AES-256</td><td>high</td></tr><tr><td><span class='pill' style='background:#F9F1DC;color:#8A6A1F;border-color:#E3D5AE'>medium</span></td><td><b>SHA-256</b></td><td>Weakened by quantum</td><td><code>samples/legacy-bank/src/payments.py:11</code><div class='muted'>SHA-256 hashing</div><div class='muted' style='margin-top:3px'><code>return hashlib.sha256(payload).hexdigest()</code></div></td><td>SHA-384 for data with a long confidentiality horizon</td><td>high</td></tr><tr><td><span class='pill' style='background:#E8F2ED;color:#1A6B4F;border-color:#BFDACE'>none</span></td><td><b>AES-256</b></td><td>Quantum safe</td><td><code>samples/legacy-bank/config/nginx.conf:4</code><div class='muted'>AES-256 cipher suite</div><div class='muted' style='margin-top:3px'><code>ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES256-SHA:DES-CBC3-SHA;</code></div></td><td>—</td><td>high</td></tr></tbody></table></div>
+
+  <h2>Algorithms in use</h2>
+  <div class="panel" style="padding:0">
+    <table><thead><tr><th>Algorithm</th><th>Occurrences</th></tr></thead>
+    <tbody><tr><td><b>RSA</b></td><td>7</td></tr><tr><td><b>SHA-256</b></td><td>4</td></tr><tr><td><b>3DES</b></td><td>2</td></tr><tr><td><b>SHA-1</b></td><td>2</td></tr><tr><td><b>ECDSA</b></td><td>2</td></tr><tr><td><b>MD5</b></td><td>1</td></tr><tr><td><b>Ed25519</b></td><td>1</td></tr><tr><td><b>ECDH</b></td><td>1</td></tr><tr><td><b>DH</b></td><td>1</td></tr><tr><td><b>AES-128</b></td><td>1</td></tr><tr><td><b>AES-256</b></td><td>1</td></tr></tbody></table>
+  </div>
+
+  <footer>
+    Generated by qsafe. Detection is static and evidence-based; a regex cannot see a
+    dynamically selected algorithm, and a clean report is not a guarantee of coverage.
+    Treat this as the starting inventory for a manual review, not as its conclusion.
+    The assumed arrival year for a cryptographically relevant quantum computer
+    (2035) is an input, not a prediction.
+  </footer>
+</div></body></html>

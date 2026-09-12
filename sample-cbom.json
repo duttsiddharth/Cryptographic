@@ -1,0 +1,1306 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6b1ff57b-a599-47bc-9b53-95c2b4effb87",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-12T08:32:53.807416+00:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "qsafe",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "target",
+      "name": "Sample Cooperative Bank",
+      "description": "Cryptographic inventory of /home/claude/qsafe/samples/legacy-bank"
+    },
+    "properties": [
+      {
+        "name": "qsafe:sector",
+        "value": "banking"
+      },
+      {
+        "name": "qsafe:readiness-score",
+        "value": "28"
+      },
+      {
+        "name": "qsafe:data-lifetime-years",
+        "value": "25"
+      },
+      {
+        "name": "qsafe:migration-years",
+        "value": "4"
+      },
+      {
+        "name": "qsafe:assumed-crqc-year",
+        "value": "2035"
+      },
+      {
+        "name": "qsafe:mosca-exposure-years",
+        "value": "20"
+      },
+      {
+        "name": "qsafe:critical-infrastructure",
+        "value": "true"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/79232e4ca5b9f4b6",
+      "name": "RSA",
+      "description": "RSA-1024 is below the NIST minimum of 2048 bits and is weak against classical attack, before quantum is considered.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0,
+          "parameterSetIdentifier": "1024"
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/legacy-branch.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        },
+        {
+          "name": "qsafe:subject",
+          "value": "CN=legacy-branch.bank.local,O=Sample Cooperative Bank,C=IN"
+        },
+        {
+          "name": "qsafe:expires",
+          "value": "2028-11-20T08:31:25+00:00"
+        },
+        {
+          "name": "qsafe:serial",
+          "value": "7174979cd7086bff269b665d7aad608e581dfbda"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/legacy-branch.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/3des/632e286b75dd284e",
+      "name": "3DES",
+      "description": "Sweet32 birthday attacks on the 64-bit block. Disallowed by NIST since 2023.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "TLS-3DES-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/nginx.conf:4"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "AES-256"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/nginx.conf",
+            "line": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-1/e6caddaa5deb3a85",
+      "name": "SHA-1",
+      "description": "Chosen-prefix collisions demonstrated in 2020. Withdrawn by NIST in 2030 plans.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "JV-SHA1-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/CoreLedger.java:11"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-256 or SHA-3"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "line": 11
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/3des/cee2d864630ed47d",
+      "name": "3DES",
+      "description": "Sweet32 birthday attacks on the 64-bit block. Disallowed by NIST since 2023.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "JV-3DES-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/CoreLedger.java:14"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "AES-256"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "line": 14
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/md5/f53956ea36cec103",
+      "name": "MD5",
+      "description": "Practical collisions since 2004. Unfit for any security purpose.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "PY-MD5-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/payments.py:8"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-256 or SHA-3"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/payments.py",
+            "line": 8
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-1/2a81d961fb787417",
+      "name": "SHA-1",
+      "description": "Chosen-prefix collisions demonstrated in 2020. Withdrawn by NIST in 2030 plans.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "JS-SHA1-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "classically_broken"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "immediate"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/tokens.js:8"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-256 or SHA-3"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/tokens.js",
+            "line": 8
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/3979960caa2ade39",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0,
+          "parameterSetIdentifier": "3072"
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/core-api.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        },
+        {
+          "name": "qsafe:subject",
+          "value": "CN=core-api.bank.local,O=Sample Cooperative Bank,C=IN"
+        },
+        {
+          "name": "qsafe:expires",
+          "value": "2028-11-20T08:31:25+00:00"
+        },
+        {
+          "name": "qsafe:serial",
+          "value": "4c7c6005446d3ffc0e39267c5bafefb4202a57da"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/core-api.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/ecdsa/ba50ea65fa09a90a",
+      "name": "ECDSA",
+      "description": "Shor's algorithm solves the discrete log on elliptic curves.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0,
+          "parameterSetIdentifier": "2561"
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/mobile-gw.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-DSA, or SLH-DSA where a conservative hash-based scheme is preferred"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 204 / 205"
+        },
+        {
+          "name": "qsafe:subject",
+          "value": "CN=mobile-gw.bank.local,O=Sample Cooperative Bank,C=IN"
+        },
+        {
+          "name": "qsafe:expires",
+          "value": "2028-11-20T08:31:25+00:00"
+        },
+        {
+          "name": "qsafe:serial",
+          "value": "4341ef646c2b28d053fe9efa03eb2de13595441d"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/mobile-gw.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/f742642ca6aa0a01",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0,
+          "parameterSetIdentifier": "2048"
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "KEY-PARSE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/service.key:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        },
+        {
+          "name": "qsafe:encrypted",
+          "value": "False"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/service.key",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/e83a1f4a6c45e466",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "SSH-RSA-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/authorized_keys.conf:1"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/authorized_keys.conf",
+            "line": 1
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/ed25519/9f9605ae4f0d5eca",
+      "name": "Ed25519",
+      "description": "An Edwards-curve signature scheme, and so equally exposed to Shor.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "SSH-ED-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/authorized_keys.conf:2"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-DSA, or a hybrid Ed25519 + ML-DSA signature"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 204"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/authorized_keys.conf",
+            "line": 2
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/ecdh/5e60f069d0d4838c",
+      "name": "ECDH",
+      "description": "Shor's algorithm recovers the shared secret from public values.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "TLS-ECDHE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/nginx.conf:4"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM, deployed in hybrid with X25519 during transition"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/nginx.conf",
+            "line": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/dh/6a47d26e7859ea79",
+      "name": "DH",
+      "description": "Finite-field Diffie-Hellman, broken by Shor.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "TLS-DHE-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/nginx.conf:4"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM in hybrid mode"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/nginx.conf",
+            "line": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/d445e5795b85ea1f",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "JV-RSA-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/CoreLedger.java:6"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "line": 6
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/900a6b8c8cc4cfc3",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "PY-RSA-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/payments.py:5"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/payments.py",
+            "line": 5
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/ecdsa/8a03ebe3ed9d1597",
+      "name": "ECDSA",
+      "description": "Shor's algorithm solves the discrete log on elliptic curves.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "PY-EC-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/payments.py:14"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-DSA, or SLH-DSA where a conservative hash-based scheme is preferred"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 204 / 205"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/payments.py",
+            "line": 14
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/rsa/c37f90395cf48a0b",
+      "name": "RSA",
+      "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "JS-JWT-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "broken_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/tokens.js:5"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "ML-KEM for key establishment, ML-DSA for signatures"
+        },
+        {
+          "name": "qsafe:nist-standard",
+          "value": "FIPS 203 / 204"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/tokens.js",
+            "line": 5
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-256/07d6534883284589",
+      "name": "SHA-256",
+      "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 128
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-002"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "weakened_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "medium"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/core-api.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-384 for data with a long confidentiality horizon"
+        },
+        {
+          "name": "qsafe:signature_algorithm",
+          "value": "sha256withrsaencryption"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/core-api.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-256/cf97fd6791a35fd8",
+      "name": "SHA-256",
+      "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 128
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-002"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "weakened_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "medium"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/legacy-branch.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-384 for data with a long confidentiality horizon"
+        },
+        {
+          "name": "qsafe:signature_algorithm",
+          "value": "sha256withrsaencryption"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/legacy-branch.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-256/5771eadf14ab8d41",
+      "name": "SHA-256",
+      "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 128
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "CERT-PARSE-002"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "certain"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "weakened_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "medium"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/certs/mobile-gw.pem:0"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-384 for data with a long confidentiality horizon"
+        },
+        {
+          "name": "qsafe:signature_algorithm",
+          "value": "ecdsa-with-sha256"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/certs/mobile-gw.pem",
+            "line": 0
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/aes-128/c29565654e75d241",
+      "name": "AES-128",
+      "description": "Grover's algorithm halves the effective key length to roughly 64 bits.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 128
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "TLS-AES128-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "weakened_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "medium"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/nginx.conf:4"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "AES-256"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/nginx.conf",
+            "line": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/sha-256/e0319fb88aba0408",
+      "name": "SHA-256",
+      "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 128
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "PY-SHA256-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "weakened_by_quantum"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "medium"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/src/payments.py:11"
+        },
+        {
+          "name": "qsafe:replacement",
+          "value": "SHA-384 for data with a long confidentiality horizon"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/src/payments.py",
+            "line": 11
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/aes-256/3d71770125ac25dd",
+      "name": "AES-256",
+      "description": "Grover leaves roughly 128 bits of effective security, which remains sound.",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "generic",
+          "nistQuantumSecurityLevel": 256
+        },
+        "oid": ""
+      },
+      "properties": [
+        {
+          "name": "qsafe:rule",
+          "value": "TLS-AES256-001"
+        },
+        {
+          "name": "qsafe:confidence",
+          "value": "high"
+        },
+        {
+          "name": "qsafe:quantum-risk",
+          "value": "quantum_safe"
+        },
+        {
+          "name": "qsafe:priority",
+          "value": "none"
+        },
+        {
+          "name": "qsafe:location",
+          "value": "samples/legacy-bank/config/nginx.conf:4"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "samples/legacy-bank/config/nginx.conf",
+            "line": 4
+          }
+        ]
+      }
+    }
+  ]
+}
