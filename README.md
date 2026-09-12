@@ -8,6 +8,8 @@ December 2027, high-priority systems migrated by December 2028, full adoption by
 December 2029. A cryptographic bill of materials is recommended as mandatory in
 government RFPs.
 
+**[See a sample readiness report](https://duttsiddharth.github.io/qsafe/sample-report.html)** — a fictional cooperative bank, 23 findings, readiness score 28 out of 100.
+
 Nobody can migrate cryptography they cannot find. `qsafe` finds it, ranks it by
 what actually needs replacing first, and emits a CycloneDX CBOM a procuring
 authority can diff between releases.
@@ -114,6 +116,18 @@ the build when someone introduces a newly broken primitive:
 `immediate` so the gate is credible, then tighten. Exit codes: `0` clean, `1`
 threshold breached, `2` bad path.
 
+**Exclude your fixtures.** Test suites, sample data and vendored dependencies
+are full of deliberately weak cryptography, and scanning them reports on your
+fixtures rather than on what you ship:
+
+```bash
+python -m qsafe.cli . --exclude tests --exclude samples --exclude 'vendor/*'
+```
+
+`--exclude` is repeatable and matches a directory name, a relative path, or a
+glob. This repository's own workflow excludes three directories for exactly this
+reason — see `.github/workflows/crypto-inventory.yml`.
+
 ## What it detects
 
 Python, Java, JavaScript and Go call sites for key generation, signing and
@@ -144,6 +158,11 @@ attestations.
 
 **The confidence scores are heuristics**, not measurements. `low` means a human
 should look, not that it is probably fine.
+
+**A clean result is the one to distrust.** If a scan returns nothing, the tool
+says so loudly rather than reporting a pass, because an empty result almost
+always means the wrong path was given or the estate is one static analysis
+cannot read. Very few real systems contain no cryptography.
 
 **The CRQC year is an assumption, not a forecast.** Nobody knows. The default of
 2035 is neither the most aggressive nor the most conservative estimate in

@@ -15,6 +15,7 @@ a concrete artefact with a concrete expiry.
 
 from __future__ import annotations
 
+import fnmatch
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -52,9 +53,39 @@ class Finding:
         return (self.path, self.line, self.algorithm, self.rule_id)
 
 
-def _iter_files(root: Path) -> Iterator[Path]:
+def _excluded(path: Path, root: Path, patterns: tuple[str, ...]) -> bool:
+    """True if a path matches any user-supplied exclude pattern.
+
+    Patterns are matched against the path relative to the scan root, against
+    each of its components, and as a glob — so `samples`, `samples/*` and
+    `*.test.js` all behave the way someone would expect.
+    """
+    if not patterns:
+        return False
+    try:
+        relative = path.relative_to(root)
+    except ValueError:
+        relative = path
+    text = relative.as_posix()
+    parts = set(relative.parts)
+    for pattern in patterns:
+        cleaned = pattern.rstrip("/")
+        if cleaned in parts:
+            return True
+        if fnmatch.fnmatch(text, pattern) or fnmatch.fnmatch(text, f"{cleaned}/*"):
+            return True
+        if fnmatch.fnmatch(path.name, pattern):
+            return True
+    return False
+
+
+def _iter_files(root: Path, exclude: tuple[str, ...] = ()) -> Iterator[Path]:
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+        dirnames[:] = [
+            d for d in dirnames
+            if d not in SKIP_DIRS and not d.startswith(".")
+            and not _excluded(Path(dirpath) / d, root, exclude)
+        ]
         for name in filenames:
             path = Path(dirpath) / name
             try:
@@ -63,6 +94,8 @@ def _iter_files(root: Path) -> Iterator[Path]:
                 if path.stat().st_size > MAX_BYTES:
                     continue
             except OSError:
+                continue
+            if _excluded(path, root, exclude):
                 continue
             yield path
 
@@ -198,14 +231,21 @@ def _scan_text(path: Path, text: str) -> list[Finding]:
     return findings
 
 
-def scan(root: str | Path) -> list[Finding]:
+def scan(root: str | Path, exclude: tuple[str, ...] | list[str] = ()) -> list[Finding]:
+    """Walk `root`, skipping anything matching `exclude`.
+
+    Excludes matter more than they sound. A security repository holds test
+    fixtures and rule packs full of algorithm names, and scanning those
+    produces findings about the scanner rather than about the estate.
+    """
     root = Path(root)
+    exclude = tuple(exclude)
     if not root.exists():
         raise FileNotFoundError(f"No such path: {root}")
     if root.is_file():
         candidates = [root]
     else:
-        candidates = list(_iter_files(root))
+        candidates = list(_iter_files(root, exclude))
 
     findings: list[Finding] = []
     for path in candidates:

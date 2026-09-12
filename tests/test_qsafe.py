@@ -272,3 +272,59 @@ def test_cli_honours_the_crqc_assumption(tmp_path):
     payload = json.loads((outdir / "findings.json").read_text())
     assert payload["mosca"]["breached"] is True
     assert payload["deadline_year"] == 2027
+
+
+# -- exclusions --------------------------------------------------------------
+
+
+def test_exclude_skips_a_directory_by_name(tmp_path):
+    fixtures = tmp_path / "samples"
+    fixtures.mkdir()
+    (fixtures / "bad.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+    (tmp_path / "app.py").write_text("import hashlib\nhashlib.sha256(b'x')\n")
+
+    assert len(scan(tmp_path)) == 2
+    remaining = scan(tmp_path, exclude=("samples",))
+    assert len(remaining) == 1
+    assert "samples" not in remaining[0].path
+
+
+def test_exclude_accepts_a_glob(tmp_path):
+    (tmp_path / "app.js").write_text("crypto.createHash('md5')\n")
+    (tmp_path / "app.test.js").write_text("crypto.createHash('md5')\n")
+    remaining = scan(tmp_path, exclude=("*.test.js",))
+    assert len(remaining) == 1
+    assert remaining[0].path.endswith("app.js")
+
+
+def test_exclude_accepts_a_nested_path(tmp_path):
+    nested = tmp_path / "pkg" / "fixtures"
+    nested.mkdir(parents=True)
+    (nested / "keys.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+    (tmp_path / "pkg" / "real.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+    remaining = scan(tmp_path, exclude=("pkg/fixtures",))
+    assert len(remaining) == 1
+    assert "fixtures" not in remaining[0].path
+
+
+def test_cli_exclude_changes_the_gate_outcome(tmp_path):
+    fixtures = tmp_path / "samples"
+    fixtures.mkdir()
+    (fixtures / "bad.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+    (tmp_path / "app.py").write_text("import hashlib\nhashlib.sha256(b'x')\n")
+
+    assert main([str(tmp_path), "-o", str(tmp_path / "a"), "--quiet",
+                 "--fail-on", "immediate"]) == 1
+    assert main([str(tmp_path), "-o", str(tmp_path / "b"), "--quiet",
+                 "--exclude", "samples", "--fail-on", "immediate"]) == 0
+
+
+def test_an_empty_scan_is_not_reported_as_a_pass(tmp_path):
+    (tmp_path / "notes.txt").write_text("no cryptography here at all\n")
+    assessment = assess(scan(tmp_path), Profile(), str(tmp_path))
+    assert assessment.found_nothing
+    assert "verify the scan target" in assessment.verdict.lower()
+
+    output = render(assessment)
+    assert "Nothing was found" in output
+    assert "wrong directory" in output

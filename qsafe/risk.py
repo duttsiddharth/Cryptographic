@@ -145,7 +145,16 @@ class Assessment:
         return int(round(100 * (1 - total / worst))) if worst else 100
 
     @property
+    def found_nothing(self) -> bool:
+        return not self.items
+
+    @property
     def verdict(self) -> str:
+        # An empty result is not a pass. It far more often means the scan was
+        # pointed at the wrong place, or at an estate this tool cannot read,
+        # than that the organisation uses no cryptography at all.
+        if self.found_nothing:
+            return "No cryptography detected — verify the scan target"
         score = self.readiness_score
         if score >= 90:
             return "Largely quantum-safe"

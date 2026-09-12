@@ -67,6 +67,20 @@ def _e(value) -> str:
     return html.escape(str(value if value is not None else ""))
 
 
+def _empty_warning(assessment: Assessment) -> str:
+    if not assessment.found_nothing:
+        return ""
+    return (
+        '<div class="note alarm"><h3>Nothing was found, and that is worth checking'
+        '</h3><p style="margin:0">A scan returning no findings almost always means '
+        'the tool was pointed at the wrong directory, or at an estate it cannot read '
+        '\u2014 compiled binaries, a mainframe, a vendor appliance, a COBOL core. Very few '
+        'real systems contain no cryptography at all.</p>'
+        '<p style="margin:10px 0 0">Confirm the scan path covers application source '
+        'and server configuration before treating this as a clean result.</p></div>'
+    )
+
+
 def _dial(score: int) -> str:
     if score >= 90:
         bg, fg, border = RISK_COLOUR[Risk.QUANTUM_SAFE]
@@ -252,8 +266,8 @@ def render(assessment: Assessment, limit: int = 100) -> str:
     <div class="body">
       <h3 style="margin-bottom:4px">{_e(assessment.verdict)}</h3>
       <p class="muted" style="margin:0">Scanned <code>{_e(assessment.scanned_path)}</code> and
-      classified {len(assessment.items)} cryptographic findings against the NIST
-      post-quantum standards.</p>
+      classified {len(assessment.items)} cryptographic finding{"" if len(assessment.items) == 1 else "s"}
+      against the NIST post-quantum standards.</p>
       <div class="stats">
         <div><b>{counts['immediate']}</b><span>need fixing today</span></div>
         <div><b>{counts['high']}</b><span>high priority</span></div>
@@ -262,6 +276,8 @@ def render(assessment: Assessment, limit: int = 100) -> str:
       </div>
     </div>
   </div>
+
+  {_empty_warning(assessment)}
 
   <div class="panel">{_risk_bar(assessment)}</div>
 

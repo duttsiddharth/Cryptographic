@@ -37,6 +37,10 @@ def build_parser() -> argparse.ArgumentParser:
                              "computer (default: 2035)")
     parser.add_argument("--critical-infrastructure", action="store_true",
                         help="Apply the 2027 CII deadline instead of 2029")
+    parser.add_argument("--exclude", action="append", default=[], metavar="PATTERN",
+                        help="Skip paths matching this pattern. Repeatable. Matches a "
+                             "directory name, a relative path, or a glob — e.g. "
+                             "--exclude samples --exclude '*.test.js'")
     parser.add_argument("--limit", type=int, default=100,
                         help="Findings shown in the HTML report (default: 100)")
     parser.add_argument("--format", choices=["all", "report", "cbom", "json"],
@@ -55,6 +59,15 @@ def _summarise(assessment) -> None:
     risks = assessment.by_risk()
 
     print()
+    if assessment.found_nothing:
+        print(f"  {profile.organisation} — nothing detected")
+        print()
+        print("  A scan with no findings usually means the wrong path was given,")
+        print("  or the estate is one this tool cannot read — compiled binaries,")
+        print("  a mainframe, a vendor appliance. Check the target before")
+        print("  treating this as a clean result.")
+        print()
+        return
     print(f"  {profile.organisation} — {assessment.verdict.lower()}")
     print(f"  readiness score {assessment.readiness_score}/100 "
           f"across {len(assessment.items)} findings")
@@ -95,7 +108,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
 
     try:
-        findings = scan(args.path)
+        findings = scan(args.path, exclude=tuple(args.exclude))
     except FileNotFoundError as error:
         print(f"qsafe: {error}", file=sys.stderr)
         return 2
