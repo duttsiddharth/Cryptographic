@@ -328,3 +328,17 @@ def test_an_empty_scan_is_not_reported_as_a_pass(tmp_path):
     output = render(assessment)
     assert "Nothing was found" in output
     assert "wrong directory" in output
+
+
+def test_previous_output_is_not_rescanned(tmp_path):
+    """A CBOM names every algorithm it found, so scanning one reports on itself."""
+    (tmp_path / "cbom.json").write_text('{"name": "3DES", "other": "MD5"}\n')
+    (tmp_path / "findings.json").write_text('{"algorithm": "SHA-1"}\n')
+    output = tmp_path / "qsafe-output"
+    output.mkdir()
+    (output / "notes.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+    (tmp_path / "app.py").write_text("import hashlib\nhashlib.md5(b'x')\n")
+
+    findings = scan(tmp_path)
+    assert len(findings) == 1
+    assert findings[0].path.endswith("app.py")

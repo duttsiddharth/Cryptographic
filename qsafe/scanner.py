@@ -31,7 +31,13 @@ SKIP_DIRS = {
     ".git", ".svn", "node_modules", "__pycache__", ".venv", "venv", "env",
     "dist", "build", "target", ".idea", ".vscode", ".mypy_cache",
     ".pytest_cache", "vendor", ".terraform", "site-packages",
+    # The tool's own output. A CBOM lists every algorithm it found, so scanning
+    # a previous run's report produces findings about the report.
+    "qsafe-output",
 }
+
+# Likewise for the output files themselves, wherever they have been moved to.
+SKIP_FILES = {"cbom.json", "findings.json", "readiness-report.html"}
 
 CERT_EXT = {".pem", ".crt", ".cer", ".der", ".key", ".p12", ".pfx"}
 MAX_BYTES = 2_000_000
@@ -94,6 +100,8 @@ def _iter_files(root: Path, exclude: tuple[str, ...] = ()) -> Iterator[Path]:
                 if path.stat().st_size > MAX_BYTES:
                     continue
             except OSError:
+                continue
+            if path.name in SKIP_FILES:
                 continue
             if _excluded(path, root, exclude):
                 continue
