@@ -119,5 +119,6 @@ touch.
 [sdutt@sdadvisory.in](mailto:sdutt@sdadvisory.in) · +91 96111 05276 ·
 [sdadvisory.in](https://sdadvisory.in)
 
+
 Twenty years in enterprise technology across BFSI and telecom, including service
 delivery management for Standard Chartered, Citibank, UOB and Manulife.
