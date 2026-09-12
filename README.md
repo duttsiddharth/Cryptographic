@@ -105,11 +105,15 @@ the build when someone introduces a newly broken primitive:
 - name: Cryptographic inventory
   run: |
     pip install -r requirements.txt
-    python -m qsafe.cli . -o qsafe-output --fail-on immediate
+    python -m qsafe.cli . -o qsafe-output \
+      --exclude tests \
+      --exclude samples \
+      --fail-on immediate
 - uses: actions/upload-artifact@v4
+  if: always()
   with:
     name: cbom
-    path: qsafe-output/cbom.json
+    path: qsafe-output/
 ```
 
 `--fail-on` accepts `immediate`, `high`, `medium`, `low`, or `never`. Start at
@@ -125,7 +129,7 @@ python -m qsafe.cli . --exclude tests --exclude samples --exclude 'vendor/*'
 ```
 
 `--exclude` is repeatable and matches a directory name, a relative path, or a
-glob. This repository's own workflow excludes three directories for exactly this
+glob. This repository's own workflow excludes four paths for exactly this
 reason — see `.github/workflows/crypto-inventory.yml`.
 
 ## What it detects
@@ -171,12 +175,13 @@ circulation.
 ## Tests
 
 ```bash
-python -m pytest -q     # 25 tests
+python -m pytest -q     # 31 tests
 ```
 
 Covering the algorithm catalogue, scanner behaviour across languages and file
 types, real certificate parsing, the Mosca calculation, prioritisation ordering,
-CycloneDX structure, HTML escaping, and the CLI exit codes.
+exclusion patterns, CycloneDX structure, HTML escaping, the empty-scan warning,
+and the CLI exit codes.
 
 ## Layout
 
