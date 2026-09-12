@@ -44,8 +44,8 @@ The arithmetic is known as **Mosca's inequality**:
 > encryption, then what you encrypt today is already exposed.
 
 For a bank holding customer records for 25 years, with a realistic 4-year
-migration, against a commonly assumed arrival around 2035 — that is 29 against
-9. Breached by twenty years, today.
+migration, against a commonly assumed arrival around 2035 — that is 29 years of
+exposure against 9 years of warning. Breached by twenty years, today.
 
 You can disagree with the arrival date. That is the point: qsafe takes it as an
 input you set, so it is an assumption you can argue about in a meeting rather

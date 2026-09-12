@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:6b1ff57b-a599-47bc-9b53-95c2b4effb87",
+  "serialNumber": "urn:uuid:d4e6919a-e033-4a99-90c2-027870a2cef5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-12T08:32:53.807416+00:00",
+    "timestamp": "2026-09-12T14:44:52.160425+00:00",
     "tools": {
       "components": [
         {
@@ -18,7 +18,7 @@
       "type": "application",
       "bom-ref": "target",
       "name": "Sample Cooperative Bank",
-      "description": "Cryptographic inventory of /home/claude/qsafe/samples/legacy-bank"
+      "description": "Cryptographic inventory of /srv/sample-cooperative-bank"
     },
     "properties": [
       {
@@ -54,7 +54,7 @@
   "components": [
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/79232e4ca5b9f4b6",
+      "bom-ref": "crypto/rsa/3c469583fbaaa772",
       "name": "RSA",
       "description": "RSA-1024 is below the NIST minimum of 2048 bits and is weak against classical attack, before quantum is considered.",
       "cryptoProperties": {
@@ -87,7 +87,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/legacy-branch.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/legacy-branch.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -103,17 +103,17 @@
         },
         {
           "name": "qsafe:expires",
-          "value": "2028-11-20T08:31:25+00:00"
+          "value": "2028-11-20T14:44:51+00:00"
         },
         {
           "name": "qsafe:serial",
-          "value": "7174979cd7086bff269b665d7aad608e581dfbda"
+          "value": "72f9733d8df7c6357b926e9be98a35df1524c7ef"
         }
       ],
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/legacy-branch.pem",
+            "location": "/srv/sample-cooperative-bank/certs/legacy-branch.pem",
             "line": 0
           }
         ]
@@ -121,7 +121,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/3des/632e286b75dd284e",
+      "bom-ref": "crypto/3des/90eaa230e1f757e5",
       "name": "3DES",
       "description": "Sweet32 birthday attacks on the 64-bit block. Disallowed by NIST since 2023.",
       "cryptoProperties": {
@@ -153,7 +153,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/nginx.conf:4"
+          "value": "/srv/sample-cooperative-bank/config/nginx.conf:4"
         },
         {
           "name": "qsafe:replacement",
@@ -163,7 +163,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/nginx.conf",
+            "location": "/srv/sample-cooperative-bank/config/nginx.conf",
             "line": 4
           }
         ]
@@ -171,7 +171,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-1/e6caddaa5deb3a85",
+      "bom-ref": "crypto/sha-1/9a3cdfe4f86081ec",
       "name": "SHA-1",
       "description": "Chosen-prefix collisions demonstrated in 2020. Withdrawn by NIST in 2030 plans.",
       "cryptoProperties": {
@@ -203,7 +203,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/CoreLedger.java:11"
+          "value": "/srv/sample-cooperative-bank/src/CoreLedger.java:11"
         },
         {
           "name": "qsafe:replacement",
@@ -213,7 +213,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "location": "/srv/sample-cooperative-bank/src/CoreLedger.java",
             "line": 11
           }
         ]
@@ -221,7 +221,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/3des/cee2d864630ed47d",
+      "bom-ref": "crypto/3des/6b6b023ef283a215",
       "name": "3DES",
       "description": "Sweet32 birthday attacks on the 64-bit block. Disallowed by NIST since 2023.",
       "cryptoProperties": {
@@ -253,7 +253,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/CoreLedger.java:14"
+          "value": "/srv/sample-cooperative-bank/src/CoreLedger.java:14"
         },
         {
           "name": "qsafe:replacement",
@@ -263,7 +263,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "location": "/srv/sample-cooperative-bank/src/CoreLedger.java",
             "line": 14
           }
         ]
@@ -271,7 +271,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/md5/f53956ea36cec103",
+      "bom-ref": "crypto/md5/e68ee7e9a15a0d9f",
       "name": "MD5",
       "description": "Practical collisions since 2004. Unfit for any security purpose.",
       "cryptoProperties": {
@@ -303,7 +303,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/payments.py:8"
+          "value": "/srv/sample-cooperative-bank/src/payments.py:8"
         },
         {
           "name": "qsafe:replacement",
@@ -313,7 +313,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/payments.py",
+            "location": "/srv/sample-cooperative-bank/src/payments.py",
             "line": 8
           }
         ]
@@ -321,7 +321,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-1/2a81d961fb787417",
+      "bom-ref": "crypto/sha-1/b498a4c37da35876",
       "name": "SHA-1",
       "description": "Chosen-prefix collisions demonstrated in 2020. Withdrawn by NIST in 2030 plans.",
       "cryptoProperties": {
@@ -353,7 +353,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/tokens.js:8"
+          "value": "/srv/sample-cooperative-bank/src/tokens.js:8"
         },
         {
           "name": "qsafe:replacement",
@@ -363,7 +363,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/tokens.js",
+            "location": "/srv/sample-cooperative-bank/src/tokens.js",
             "line": 8
           }
         ]
@@ -371,7 +371,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/3979960caa2ade39",
+      "bom-ref": "crypto/rsa/658a810391388420",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -404,7 +404,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/core-api.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/core-api.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -420,17 +420,17 @@
         },
         {
           "name": "qsafe:expires",
-          "value": "2028-11-20T08:31:25+00:00"
+          "value": "2028-11-20T14:44:51+00:00"
         },
         {
           "name": "qsafe:serial",
-          "value": "4c7c6005446d3ffc0e39267c5bafefb4202a57da"
+          "value": "43c1341feaf67df76342109f2db139ce1e92946f"
         }
       ],
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/core-api.pem",
+            "location": "/srv/sample-cooperative-bank/certs/core-api.pem",
             "line": 0
           }
         ]
@@ -438,7 +438,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/ecdsa/ba50ea65fa09a90a",
+      "bom-ref": "crypto/ecdsa/1b6c31ca1f1b52e6",
       "name": "ECDSA",
       "description": "Shor's algorithm solves the discrete log on elliptic curves.",
       "cryptoProperties": {
@@ -448,7 +448,7 @@
           "executionEnvironment": "unknown",
           "implementationPlatform": "generic",
           "nistQuantumSecurityLevel": 0,
-          "parameterSetIdentifier": "2561"
+          "parameterSetIdentifier": "256"
         },
         "oid": ""
       },
@@ -471,7 +471,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/mobile-gw.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/mobile-gw.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -487,17 +487,17 @@
         },
         {
           "name": "qsafe:expires",
-          "value": "2028-11-20T08:31:25+00:00"
+          "value": "2028-11-20T14:44:51+00:00"
         },
         {
           "name": "qsafe:serial",
-          "value": "4341ef646c2b28d053fe9efa03eb2de13595441d"
+          "value": "762748a8c3a9ec9a898ae3bf2903a2322ca40382"
         }
       ],
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/mobile-gw.pem",
+            "location": "/srv/sample-cooperative-bank/certs/mobile-gw.pem",
             "line": 0
           }
         ]
@@ -505,7 +505,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/f742642ca6aa0a01",
+      "bom-ref": "crypto/rsa/846b2e4a8b231cdc",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -538,7 +538,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/service.key:0"
+          "value": "/srv/sample-cooperative-bank/certs/service.key:0"
         },
         {
           "name": "qsafe:replacement",
@@ -556,7 +556,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/service.key",
+            "location": "/srv/sample-cooperative-bank/certs/service.key",
             "line": 0
           }
         ]
@@ -564,7 +564,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/e83a1f4a6c45e466",
+      "bom-ref": "crypto/rsa/8fd6df357f3c9409",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -596,7 +596,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/authorized_keys.conf:1"
+          "value": "/srv/sample-cooperative-bank/config/authorized_keys.conf:1"
         },
         {
           "name": "qsafe:replacement",
@@ -610,7 +610,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/authorized_keys.conf",
+            "location": "/srv/sample-cooperative-bank/config/authorized_keys.conf",
             "line": 1
           }
         ]
@@ -618,7 +618,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/ed25519/9f9605ae4f0d5eca",
+      "bom-ref": "crypto/ed25519/dfbd7cfb742e8ff3",
       "name": "Ed25519",
       "description": "An Edwards-curve signature scheme, and so equally exposed to Shor.",
       "cryptoProperties": {
@@ -650,7 +650,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/authorized_keys.conf:2"
+          "value": "/srv/sample-cooperative-bank/config/authorized_keys.conf:2"
         },
         {
           "name": "qsafe:replacement",
@@ -664,7 +664,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/authorized_keys.conf",
+            "location": "/srv/sample-cooperative-bank/config/authorized_keys.conf",
             "line": 2
           }
         ]
@@ -672,7 +672,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/ecdh/5e60f069d0d4838c",
+      "bom-ref": "crypto/ecdh/4fde577707deba57",
       "name": "ECDH",
       "description": "Shor's algorithm recovers the shared secret from public values.",
       "cryptoProperties": {
@@ -704,7 +704,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/nginx.conf:4"
+          "value": "/srv/sample-cooperative-bank/config/nginx.conf:4"
         },
         {
           "name": "qsafe:replacement",
@@ -718,7 +718,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/nginx.conf",
+            "location": "/srv/sample-cooperative-bank/config/nginx.conf",
             "line": 4
           }
         ]
@@ -726,7 +726,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/dh/6a47d26e7859ea79",
+      "bom-ref": "crypto/dh/a0adf7c1d229448c",
       "name": "DH",
       "description": "Finite-field Diffie-Hellman, broken by Shor.",
       "cryptoProperties": {
@@ -758,7 +758,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/nginx.conf:4"
+          "value": "/srv/sample-cooperative-bank/config/nginx.conf:4"
         },
         {
           "name": "qsafe:replacement",
@@ -772,7 +772,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/nginx.conf",
+            "location": "/srv/sample-cooperative-bank/config/nginx.conf",
             "line": 4
           }
         ]
@@ -780,7 +780,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/d445e5795b85ea1f",
+      "bom-ref": "crypto/rsa/a9559c9a0c09f0a1",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -812,7 +812,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/CoreLedger.java:6"
+          "value": "/srv/sample-cooperative-bank/src/CoreLedger.java:6"
         },
         {
           "name": "qsafe:replacement",
@@ -826,7 +826,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/CoreLedger.java",
+            "location": "/srv/sample-cooperative-bank/src/CoreLedger.java",
             "line": 6
           }
         ]
@@ -834,7 +834,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/900a6b8c8cc4cfc3",
+      "bom-ref": "crypto/rsa/2c20befb7c9ce9f9",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -866,7 +866,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/payments.py:5"
+          "value": "/srv/sample-cooperative-bank/src/payments.py:5"
         },
         {
           "name": "qsafe:replacement",
@@ -880,7 +880,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/payments.py",
+            "location": "/srv/sample-cooperative-bank/src/payments.py",
             "line": 5
           }
         ]
@@ -888,7 +888,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/ecdsa/8a03ebe3ed9d1597",
+      "bom-ref": "crypto/ecdsa/5307534cd1c61bd6",
       "name": "ECDSA",
       "description": "Shor's algorithm solves the discrete log on elliptic curves.",
       "cryptoProperties": {
@@ -920,7 +920,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/payments.py:14"
+          "value": "/srv/sample-cooperative-bank/src/payments.py:14"
         },
         {
           "name": "qsafe:replacement",
@@ -934,7 +934,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/payments.py",
+            "location": "/srv/sample-cooperative-bank/src/payments.py",
             "line": 14
           }
         ]
@@ -942,7 +942,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/rsa/c37f90395cf48a0b",
+      "bom-ref": "crypto/rsa/0906e30311116c20",
       "name": "RSA",
       "description": "Shor's algorithm factors the modulus. Increasing key size does not help.",
       "cryptoProperties": {
@@ -974,7 +974,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/tokens.js:5"
+          "value": "/srv/sample-cooperative-bank/src/tokens.js:5"
         },
         {
           "name": "qsafe:replacement",
@@ -988,7 +988,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/tokens.js",
+            "location": "/srv/sample-cooperative-bank/src/tokens.js",
             "line": 5
           }
         ]
@@ -996,7 +996,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-256/07d6534883284589",
+      "bom-ref": "crypto/sha-256/2a76e57851b9a60c",
       "name": "SHA-256",
       "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
       "cryptoProperties": {
@@ -1028,7 +1028,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/core-api.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/core-api.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -1042,7 +1042,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/core-api.pem",
+            "location": "/srv/sample-cooperative-bank/certs/core-api.pem",
             "line": 0
           }
         ]
@@ -1050,7 +1050,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-256/cf97fd6791a35fd8",
+      "bom-ref": "crypto/sha-256/9a65904e0f6769a4",
       "name": "SHA-256",
       "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
       "cryptoProperties": {
@@ -1082,7 +1082,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/legacy-branch.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/legacy-branch.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -1096,7 +1096,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/legacy-branch.pem",
+            "location": "/srv/sample-cooperative-bank/certs/legacy-branch.pem",
             "line": 0
           }
         ]
@@ -1104,7 +1104,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-256/5771eadf14ab8d41",
+      "bom-ref": "crypto/sha-256/f0a43e526712ea82",
       "name": "SHA-256",
       "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
       "cryptoProperties": {
@@ -1136,7 +1136,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/certs/mobile-gw.pem:0"
+          "value": "/srv/sample-cooperative-bank/certs/mobile-gw.pem:0"
         },
         {
           "name": "qsafe:replacement",
@@ -1150,7 +1150,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/certs/mobile-gw.pem",
+            "location": "/srv/sample-cooperative-bank/certs/mobile-gw.pem",
             "line": 0
           }
         ]
@@ -1158,7 +1158,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/aes-128/c29565654e75d241",
+      "bom-ref": "crypto/aes-128/8a5fd6b9a339d214",
       "name": "AES-128",
       "description": "Grover's algorithm halves the effective key length to roughly 64 bits.",
       "cryptoProperties": {
@@ -1190,7 +1190,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/nginx.conf:4"
+          "value": "/srv/sample-cooperative-bank/config/nginx.conf:4"
         },
         {
           "name": "qsafe:replacement",
@@ -1200,7 +1200,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/nginx.conf",
+            "location": "/srv/sample-cooperative-bank/config/nginx.conf",
             "line": 4
           }
         ]
@@ -1208,7 +1208,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/sha-256/e0319fb88aba0408",
+      "bom-ref": "crypto/sha-256/3a0b1e29ede3643b",
       "name": "SHA-256",
       "description": "Grover reduces preimage resistance to roughly 128 bits. Acceptable, but SHA-384 is the safer choice for long-lived signatures.",
       "cryptoProperties": {
@@ -1240,7 +1240,7 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/src/payments.py:11"
+          "value": "/srv/sample-cooperative-bank/src/payments.py:11"
         },
         {
           "name": "qsafe:replacement",
@@ -1250,7 +1250,7 @@
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/src/payments.py",
+            "location": "/srv/sample-cooperative-bank/src/payments.py",
             "line": 11
           }
         ]
@@ -1258,7 +1258,7 @@
     },
     {
       "type": "cryptographic-asset",
-      "bom-ref": "crypto/aes-256/3d71770125ac25dd",
+      "bom-ref": "crypto/aes-256/9741025613acbb9c",
       "name": "AES-256",
       "description": "Grover leaves roughly 128 bits of effective security, which remains sound.",
       "cryptoProperties": {
@@ -1290,13 +1290,13 @@
         },
         {
           "name": "qsafe:location",
-          "value": "samples/legacy-bank/config/nginx.conf:4"
+          "value": "/srv/sample-cooperative-bank/config/nginx.conf:4"
         }
       ],
       "evidence": {
         "occurrences": [
           {
-            "location": "samples/legacy-bank/config/nginx.conf",
+            "location": "/srv/sample-cooperative-bank/config/nginx.conf",
             "line": 4
           }
         ]
