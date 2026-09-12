@@ -115,9 +115,14 @@ def _read_text(path: Path) -> str | None:
         return None
 
 
-def _curve_bits(curve_name: str) -> int | None:
-    digits = "".join(c for c in curve_name if c.isdigit())
-    return int(digits) if digits else None
+def _curve_bits(curve) -> int | None:
+    """Key size of an elliptic curve, in bits.
+
+    Never scrape the digits out of the curve name: "secp256r1" yields 2561
+    that way, which then reads as a 2561-bit key in the report.
+    `cryptography` exposes the real value.
+    """
+    return getattr(curve, "key_size", None)
 
 
 def _describe_public_key(public_key) -> tuple[str, int | None, str]:
@@ -125,8 +130,8 @@ def _describe_public_key(public_key) -> tuple[str, int | None, str]:
     if isinstance(public_key, rsa.RSAPublicKey):
         return "RSA", public_key.key_size, f"RSA-{public_key.key_size}"
     if isinstance(public_key, ec.EllipticCurvePublicKey):
-        name = public_key.curve.name
-        return "ECDSA", _curve_bits(name), f"EC curve {name}"
+        curve = public_key.curve
+        return "ECDSA", _curve_bits(curve), f"EC curve {curve.name}"
     if isinstance(public_key, ed25519.Ed25519PublicKey):
         return "Ed25519", 256, "Ed25519"
     if isinstance(public_key, ed448.Ed448PublicKey):
