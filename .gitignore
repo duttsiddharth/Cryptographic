@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+qsafe-output/
+dist/
+*.egg-info/
+
+# Generated locally by samples/generate_certs.py — never commit keys
+samples/legacy-bank/certs/*.pem
+samples/legacy-bank/certs/*.key
