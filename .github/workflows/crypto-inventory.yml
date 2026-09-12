@@ -1,0 +1,20 @@
+name: Cryptographic inventory
+
+on: [push, pull_request]
+
+jobs:
+  qsafe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Scan for quantum-broken cryptography
+        run: python -m qsafe.cli . -o qsafe-output --fail-on immediate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cbom
+          path: qsafe-output/
