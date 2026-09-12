@@ -342,3 +342,17 @@ def test_previous_output_is_not_rescanned(tmp_path):
     findings = scan(tmp_path)
     assert len(findings) == 1
     assert findings[0].path.endswith("app.py")
+
+
+def test_ec_key_size_is_the_curve_size_not_the_name(tmp_path):
+    """secp256r1 is a 256-bit curve. Scraping digits from the name gives 2561."""
+    target = tmp_path / "ec.pem"
+    _certificate(target, ec.generate_private_key(ec.SECP256R1()), "ec")
+    finding = next(f for f in scan(tmp_path) if f.rule_id == "CERT-PARSE-001")
+    assert finding.algorithm == "ECDSA"
+    assert finding.key_size == 256
+
+    target384 = tmp_path / "ec384.pem"
+    _certificate(target384, ec.generate_private_key(ec.SECP384R1()), "ec384")
+    sizes = {f.key_size for f in scan(tmp_path) if f.rule_id == "CERT-PARSE-001"}
+    assert sizes == {256, 384}
